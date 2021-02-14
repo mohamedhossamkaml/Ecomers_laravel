@@ -9,11 +9,15 @@
     </div>
     <!-- /.box-header -->
     <div class="box-body">
-    
+
         {!! Form::open(['url'=>aurl('admin/'.$admin->id), 'method'=>'put']) !!}
         <div class="form-group">
-            {!! Form::label('name', atrans('name') ) !!}
-            {!! Form::text('name',$admin->name,['class'=>'form-control'] )!!}
+            {!! Form::label('frist_name', atrans('frist_name') ) !!}
+            {!! Form::text('frist_name',$admin->frist_name,['class'=>'form-control'] )!!}
+        </div>
+        <div class="form-group">
+            {!! Form::label('last_name', atrans('last_name') ) !!}
+            {!! Form::text('last_name',$admin->last_name,['class'=>'form-control'] )!!}
         </div>
         <div class="form-group">
             {!! Form::label('email', atrans('email') ) !!}
@@ -22,6 +26,10 @@
         <div class="form-group">
             {!! Form::label('password', atrans('password') ) !!}
             {!! Form::password('password',['class'=>'form-control'] )!!}
+        </div>
+        <div class="form-group">
+            {!! Form::label('group_id', atrans('group_id') ) !!}
+            {!! Form::select('group_id',App\Model\admingroup::pluck('name','id'),$admin->group_id,['class'=>'form-control address','placeholder'=>'-------'] )!!}
         </div>
         {!! Form::submit(atrans('save'), ['class'=>'btn btn-primary'] ) !!}
         {!! Form::close() !!}

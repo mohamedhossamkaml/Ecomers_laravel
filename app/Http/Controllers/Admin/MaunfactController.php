@@ -7,11 +7,19 @@ use App\DataTables\MaunfactsDatatable;
 
 use Illuminate\Http\Request;
 
-use App\Model\Maunfacturers; 
+use App\Model\Maunfacturers;
 use Illuminate\Support\Facades\Storage;
 
 class MaunfactController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('Permission:maunfacturers_show'  ,['only'=>'index']);
+        $this->middleware('Permission:maunfacturers_edie'  ,['only'=>'edit','update']);
+        $this->middleware('Permission:maunfacturers_add'   ,['only'=>'create','store']);
+        $this->middleware('Permission:maunfacturers_delete',['only'=>'destroy','multi_delete']);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -72,8 +80,8 @@ class MaunfactController extends Controller
                 'lng'           =>  atrans('lng'),
                 'icon'          =>  atrans('icon'),
             ]);
-        
-        if (request()->hasFile('icon')) 
+
+        if (request()->hasFile('icon'))
         {
             $data['icon'] =  up()->upload([
                 //'new_name'      =>'',
@@ -81,7 +89,7 @@ class MaunfactController extends Controller
                 'path'          =>'maunfacturers',
                 'upload_type'   =>'single',
                 'delete_file'   =>'',
-            ]); 
+            ]);
         }
         Maunfacturers::create($data);
 
@@ -111,7 +119,7 @@ class MaunfactController extends Controller
     {
         //
         $maunfact = Maunfacturers::find($id);
-        $title = atrans('edit'); 
+        $title = atrans('edit');
         return view('admin.maunfacturers.edit',compact('maunfact','title'));
     }
 
@@ -154,8 +162,8 @@ class MaunfactController extends Controller
                 'lng'           =>  atrans('lng'),
                 'icon'          =>  atrans('icon'),
             ]);
-        
-        if (request()->hasFile('icon')) 
+
+        if (request()->hasFile('icon'))
         {
             $data['icon'] =  up()->upload([
                 //'new_name'      =>'',
@@ -163,7 +171,7 @@ class MaunfactController extends Controller
                 'path'          =>'maunfacturers',
                 'upload_type'   =>'single',
                 'delete_file'   =>Maunfacturers::find($id)->icon,
-            ]); 
+            ]);
         }
 
         Maunfacturers::where('id',$id)->update($data);
@@ -181,7 +189,7 @@ class MaunfactController extends Controller
      */
     public function destroy($id)
     {
-        
+
         $maunfacturers = Maunfacturers::find($id);
 
         Storage::delete($maunfacturers->icon);
@@ -198,16 +206,16 @@ class MaunfactController extends Controller
         if (is_array(request('item')))
         {
             // Maunfacturers::destroy(request('item'));
-            foreach (request('item') as $id) 
+            foreach (request('item') as $id)
             {
                 $maunfacturers = Maunfacturers::find($id);
                 Storage::delete($maunfacturers->icon);
                 $maunfacturers->delete();
             }
         }else {
-        
+
             // Maunfacturers::find(request('item'))->delete();
-            foreach (request('item') as $id) 
+            foreach (request('item') as $id)
             {
                 $maunfacturers = Maunfacturers::find(request('item'));
                 Storage::delete($maunfacturers->icon);

@@ -7,11 +7,18 @@ use App\DataTables\MollsDatatable;
 
 use Illuminate\Http\Request;
 
-use App\Model\Moll; 
+use App\Model\Moll;
 use Illuminate\Support\Facades\Storage;
 
 class MollsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('Permission:molls_show'  ,['only'=>'index']);
+        $this->middleware('Permission:molls_edie'  ,['only'=>'edit','update']);
+        $this->middleware('Permission:molls_add'   ,['only'=>'create','store']);
+        $this->middleware('Permission:molls_delete',['only'=>'destroy','multi_delete']);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -74,8 +81,8 @@ class MollsController extends Controller
                 'lng'           =>  atrans('lng'),
                 'icon'          =>  atrans('icon'),
             ]);
-        
-        if (request()->hasFile('icon')) 
+
+        if (request()->hasFile('icon'))
         {
             $data['icon'] =  up()->upload([
                 //'new_name'      =>'',
@@ -83,7 +90,7 @@ class MollsController extends Controller
                 'path'          =>'molls',
                 'upload_type'   =>'single',
                 'delete_file'   =>'',
-            ]); 
+            ]);
         }
         Moll::create($data);
 
@@ -113,7 +120,7 @@ class MollsController extends Controller
     {
         //
         $moll = Moll::find($id);
-        $title = atrans('edit'); 
+        $title = atrans('edit');
         return view('admin.molls.edit',compact('moll','title'));
     }
 
@@ -158,8 +165,8 @@ class MollsController extends Controller
                 'lng'           =>  atrans('lng'),
                 'icon'          =>  atrans('icon'),
             ]);
-        
-        if (request()->hasFile('icon')) 
+
+        if (request()->hasFile('icon'))
         {
             $data['icon'] =  up()->upload([
                 //'new_name'      =>'',
@@ -167,7 +174,7 @@ class MollsController extends Controller
                 'path'          =>'molls',
                 'upload_type'   =>'single',
                 'delete_file'   =>Moll::find($id)->icon,
-            ]); 
+            ]);
         }
 
         Moll::where('id',$id)->update($data);
@@ -185,7 +192,7 @@ class MollsController extends Controller
      */
     public function destroy($id)
     {
-        
+
         $molls = Moll::find($id);
 
         Storage::delete($molls->icon);
@@ -202,16 +209,16 @@ class MollsController extends Controller
         if (is_array(request('item')))
         {
             // Moll::destroy(request('item'));
-            foreach (request('item') as $id) 
+            foreach (request('item') as $id)
             {
                 $molls = Moll::find($id);
                 Storage::delete($molls->icon);
                 $molls->delete();
             }
         }else {
-        
+
             // Moll::find(request('item'))->delete();
-            foreach (request('item') as $id) 
+            foreach (request('item') as $id)
             {
                 $molls = Moll::find(request('item'));
                 Storage::delete($molls->icon);

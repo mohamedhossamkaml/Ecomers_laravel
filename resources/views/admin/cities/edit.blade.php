@@ -9,7 +9,7 @@
     </div>
     <!-- /.box-header -->
     <div class="box-body">
-    
+
         {!! Form::open(['url'=>aurl('cities/'.$city->id), 'method'=>'put']) !!}
 
         <div class="form-group">
@@ -22,7 +22,7 @@
         </div>
         <div class="form-group">
             {!! Form::label('country_id', atrans('country_id') ) !!}
-            {!! Form::select('country_id',App\Model\Country::pluck('country_name_'.session('lang'),'id') , old('country_id'),['class'=>'form-control'] )!!}
+            {!! Form::select('country_id',App\Model\Country::pluck('country_name_'.session('lang'),'id') ,  $city->country_id,['class'=>'form-control'] )!!}
         </div>
 
 

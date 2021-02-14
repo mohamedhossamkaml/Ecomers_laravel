@@ -11,11 +11,11 @@ URL: https://www.freshdesignweb.com/ustora/
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <title>Ustora Demo</title>
-        <link rel="stylesheet" href="{{ url('') }}/css/app.css"  />
+        {{-- <link rel="stylesheet" href="{{ url('') }}/css/app.css"  /> --}}
         <!-- Font Awesome -->
         <link rel="stylesheet" href="{{ url('design/adminlt') }}/plugins/fontawesome-free/css/all.min.css">
         <!-- Ionicons -->
-        {{-- <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"> --}}
+        <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
         <!-- SweetAlert2 -->
         <link rel="stylesheet" href="{{ url('design/adminlt') }}/plugins/sweetalert2/sweetalert2.min.css">
         <!-- Toastr -->
@@ -39,9 +39,9 @@ URL: https://www.freshdesignweb.com/ustora/
         <link rel="stylesheet" href="{{ url('design/style') }}/css/owl.carousel.css">
         <link rel="stylesheet" href="{{ url('design/style') }}/style.css">
         <link rel="stylesheet" href="{{ url('design/style') }}/css/responsive.css">
-        {{-- @if (lang() == 'ar')
+        @if (lang() == 'ar')
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-rtl/3.4.0/css/bootstrap-rtl.css">
-        @endif --}}
+        @endif
 
         {{-- <link rel="icon" href="{{ Storage::url(setting()->logo) }}"> --}}
             <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -51,6 +51,6 @@ URL: https://www.freshdesignweb.com/ustora/
             <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
             <![endif]-->
     </head>
-    <body class="hold-transition login-page">
+    <body class="">
 
 

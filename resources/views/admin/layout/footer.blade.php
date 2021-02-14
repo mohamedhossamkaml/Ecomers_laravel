@@ -202,6 +202,7 @@
 </div>
 <!-- ./wrapper -->
 @stack('app')
+@stack('js_ss')
 
 <!-- jQuery 3 -->
 <script src="{{url('')}}/design/AdminLTE/bower_components/jquery/dist/jquery.min.js"></script>
@@ -280,6 +281,7 @@ $.widget.bridge('uibutton', $.ui.button);
 @endif
 
 @stack('js')
+
 
 
 

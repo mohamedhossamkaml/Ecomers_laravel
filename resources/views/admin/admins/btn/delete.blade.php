@@ -15,7 +15,7 @@
             </div>
             {!! Form::open(['route'=>['admin.destroy',$id],'method'=>'delete']) !!}
             <div class="modal-body">
-                <p>{{ trans('admin.delete_this',['name'=>$name])  }}</p>
+                <p>{{ trans('admin.delete_this',['name'=>$frist_name])  }}</p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-info" data-dismiss="modal">{{atrans('close')}}</button>

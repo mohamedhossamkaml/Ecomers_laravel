@@ -16,7 +16,7 @@ class Admin extends Authenticatable
     protected $tabl = 'admins';
 
     protected $fillable = [
-        'name', 'email', 'password',
+        'frist_name', 'last_name','group_id', 'email', 'password',
     ];
 
     /**
@@ -28,12 +28,21 @@ class Admin extends Authenticatable
         'password', 'remember_token',
     ];
 
+    /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+    ];
+
     public function group_id()
     {
-        return $this->hasOne('App\AdminGroups','id','group_id'); 
+        return $this->hasOne('App\Model\admingroup','id','group_id');
     }
     public function group ()
     {
-        return $this->hasOne('App\AdminGroups','id','group_id'); 
+        return $this->hasOne('App\Model\admingroup','id','group_id');
     }
 }

@@ -15,6 +15,12 @@
 //use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Route;
 
+// Route::group(
+//     [
+//         'prefix' => LaravelLocalization::setLocale(),
+//         'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]
+//     ], function(){ //...
+//     });
 
 Route::group(['middleware' => 'Maintenance'], function () {
 
@@ -33,3 +39,5 @@ Route::get('maintenance', function () {
 
     return view('style.maintenance');
 });
+
+// Route::get('{path}','HomeController@index')->where( 'path','([A-z\d-\/_.]+)?' );

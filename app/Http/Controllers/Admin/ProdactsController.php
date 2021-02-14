@@ -19,6 +19,16 @@ use Illuminate\Support\Facades\Storage;
 
 class ProdactsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('Permission:prodact_show'  ,['only'=>'index']);
+        $this->middleware('Permission:prodact_edie'  ,['only'=>'edit','update','upload_files','update_product_image']);
+        $this->middleware('Permission:prodact_add'   ,['only'=>'create','store']);
+        $this->middleware('Permission:prodact_delete',['only'=>
+                                                        'destroy','multi_delete','soft_prod','deleteProduct',
+                                                        'delete_file','multi_soft_delete','delete_trash_Product',
+                                                        'softProduct','softProduct','delete_min_image']);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -471,7 +481,6 @@ public function upload_files($id)
 
         session()->flash('success',atrans('restored'));
         return redirect(aurl('prodacts/soft/deleted'));
-
     }
 
     public function softProduct($id)

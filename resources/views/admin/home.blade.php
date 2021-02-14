@@ -8,12 +8,12 @@
                 <!-- small box -->
                 <div class="small-box bg-red">
                     <div class="inner">
-                    <h3>150</h3>
+                    <h3>{{ $Admin_count }}</h3>
 
-                    <p>New Orders</p>
+                    <p>{{ atrans('admin') }}</p>
                     </div>
                     <div class="icon">
-                    <i class="ion ion-bag"></i>
+                        <i class="fas fa-user-shield"></i>
                     </div>
                     <a href="#" class="small-box-footer">{{ atrans('more_info') }}  <i class="fa fa-arrow-circle-right"></i></a>
                 </div>
@@ -118,7 +118,7 @@
 
                     <p>{{ atrans('descriptions') }}</p>
                     </div>
-                    <div class="icon" style="color: #c7c8df3d"> 
+                    <div class="icon" style="color: #c7c8df3d">
                     <i class="ion ion-pie-graph"></i>
                     </div>
                     <a href="{{  aurl('departments') }}" class="small-box-footer">{{ atrans('more_info') }}  <i class="fa fa-arrow-circle-right"></i></a>

@@ -12,6 +12,13 @@ use Illuminate\Support\Facades\Storage;
 
 class CountriesController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('Permission:country_show'  ,['only'=>'index']);
+        $this->middleware('Permission:country_edie'  ,['only'=>'edit','update']);
+        $this->middleware('Permission:country_add'   ,['only'=>'create','store']);
+        $this->middleware('Permission:country_delete',['only'=>'destroy','multi_delete']);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -60,8 +67,8 @@ class CountriesController extends Controller
                 'currency'              =>  atrans('currency'),
                 'logo'                  =>  atrans('logo'),
             ]);
-        
-        if (request()->hasFile('logo')) 
+
+        if (request()->hasFile('logo'))
         {
             $data['logo'] =  up()->upload([
                 //'new_name'      =>'',
@@ -69,7 +76,7 @@ class CountriesController extends Controller
                 'path'          =>'countries',
                 'upload_type'   =>'single',
                 'delete_file'   =>'',
-            ]); 
+            ]);
         }
         Country::create($data);
 
@@ -99,7 +106,7 @@ class CountriesController extends Controller
     {
         //
         $country = Country::find($id);
-        $title = atrans('edit'); 
+        $title = atrans('edit');
         return view('admin.countries.edit',compact('country','title'));
     }
 
@@ -130,8 +137,8 @@ class CountriesController extends Controller
                 'currency'              =>  atrans('currency'),
                 'logo'                  =>  atrans('logo'),
             ]);
-        
-        if (request()->hasFile('logo')) 
+
+        if (request()->hasFile('logo'))
         {
             $data['logo'] =  up()->upload([
                 //'new_name'      =>'',
@@ -139,7 +146,7 @@ class CountriesController extends Controller
                 'path'          =>'countries',
                 'upload_type'   =>'single',
                 'delete_file'   =>Country::find($id)->logo,
-            ]); 
+            ]);
         }
 
         Country::where('id',$id)->update($data);
@@ -157,7 +164,7 @@ class CountriesController extends Controller
      */
     public function destroy($id)
     {
-        
+
         $countries = Country::find($id);
 
         Storage::delete($countries->logo);
@@ -174,16 +181,16 @@ class CountriesController extends Controller
         if (is_array(request('item')))
         {
             // Country::destroy(request('item'));
-            foreach (request('item') as $id) 
+            foreach (request('item') as $id)
             {
                 $countries = Country::find($id);
                 Storage::delete($countries->logo);
                 $countries->delete();
             }
         }else {
-        
+
             // Country::find(request('item'))->delete();
-            foreach (request('item') as $id) 
+            foreach (request('item') as $id)
             {
                 $countries = Country::find(request('item'));
                 Storage::delete($countries->logo);

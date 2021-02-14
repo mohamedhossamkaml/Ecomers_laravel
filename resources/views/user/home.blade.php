@@ -3,7 +3,7 @@
 
 
         <!-- Small boxes (Stat box) -->
-        {{-- <div class="row">
+        <div class="row">
             <div class="col-lg-3 col-xs-6">
                 <!-- small box -->
                 <div class="small-box bg-red">
@@ -23,7 +23,7 @@
                 <!-- small box -->
                 <div class="small-box  bg-gray-active">
                     <div class="inner">
-                    <h3>{{  $Product_count }} </h3>
+                    {{-- <h3>{{  $Product_count }} </h3> --}}
 
                     <p>{{ atrans('prodacts') }}</p>
                     </div>
@@ -38,7 +38,7 @@
                 <!-- small box -->
                 <div class="small-box bg-olive ">
                     <div class="inner">
-                    <h3> {{  $users_count  }}</h3>
+                    {{-- <h3> {{  $users_count  }}</h3> --}}
 
                     <p>{{ atrans('users') }}</p>
                     </div>
@@ -53,7 +53,7 @@
                 <!-- small box -->
                 <div class="small-box bg-purple-gradient  ">
                     <div class="inner">
-                    <h3>{{ $moll_count }}</h3>
+                    {{-- <h3>{{ $moll_count }}</h3> --}}
 
                     <p>{{ atrans('molls') }}</p>
                     </div>
@@ -84,7 +84,7 @@
                 <!-- small box -->
                 <div class="small-box bg-black-gradient ">
                     <div class="inner">
-                    <h3> {{  $maunfacturers_count  }}</h3>
+                    {{-- <h3> {{  $maunfacturers_count  }}</h3> --}}
 
                     <p>{{ atrans('maunfacturers') }}</p>
                     </div>
@@ -114,18 +114,18 @@
                 <!-- small box -->
                 <div class="small-box bg-navy-active">
                     <div class="inner">
-                    <h3>{{ $department_count }}</h3>
+                    {{-- <h3>{{ $department_count }}</h3> --}}
 
                     <p>{{ atrans('descriptions') }}</p>
                     </div>
-                    <div class="icon" style="color: #c7c8df3d"> 
+                    <div class="icon" style="color: #c7c8df3d">
                     <i class="ion ion-pie-graph"></i>
                     </div>
                     <a href="{{  aurl('departments') }}" class="small-box-footer">{{ atrans('more_info') }}  <i class="fa fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             <!-- ./col -->
-        </div> --}}
+        </div>
         <!-- /.row -->
 
 

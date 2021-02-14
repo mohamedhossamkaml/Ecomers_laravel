@@ -14,6 +14,8 @@ Route::group(['prefix' => 'user' , 'namespace'=> 'User'], function () {
 
     Route::post('/category' ,'UserData@getCat' );
 
+    Route::get('{path}','HomeController@index')->where( 'path','([A-z\d-\/_.]+)?' );
+
     Route::group(['middleware' => 'users:user'], function () {
         Route::any('logout/gend', 'AuthUsers@logout');
         Route::resource( 'home', 'HomeController');

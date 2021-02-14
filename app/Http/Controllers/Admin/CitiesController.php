@@ -12,6 +12,14 @@ use Illuminate\Support\Facades\Storage;
 
 class CitiesController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('Permission:city_show'  ,['only'=>'index']);
+        $this->middleware('Permission:city_edie'  ,['only'=>'edit','update']);
+        $this->middleware('Permission:city_add'   ,['only'=>'create','store']);
+        $this->middleware('Permission:city_delete',['only'=>'destroy','multi_delete']);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -54,7 +62,7 @@ class CitiesController extends Controller
                 'city_name_en'       =>  atrans('city_name_en'),
                 'country_id'         =>  atrans('country_id'),
             ]);
-        
+
 
         City::create($data);
 
@@ -84,7 +92,7 @@ class CitiesController extends Controller
     {
         //
         $city = City::find($id);
-        $title = atrans('edit'); 
+        $title = atrans('edit');
         return view('admin.cities.edit',compact('city','title'));
     }
 
@@ -109,7 +117,7 @@ class CitiesController extends Controller
                 'city_name_en'       =>  atrans('city_name_en'),
                 'country_id'         =>  atrans('country_id'),
             ]);
-        
+
         City::where('id',$id)->update($data);
 
         session()->flash('success',atrans('record_edit'));
@@ -125,7 +133,7 @@ class CitiesController extends Controller
      */
     public function destroy($id)
     {
-        
+
         $cities = City::find($id);
 
         $cities->delete();
@@ -140,15 +148,15 @@ class CitiesController extends Controller
         if (is_array(request('item')))
         {
             // City::destroy(request('item'));
-            foreach (request('item') as $id) 
+            foreach (request('item') as $id)
             {
                 $cities = City::find($id);
                 $cities->delete();
             }
         }else {
-        
+
             // City::find(request('item'))->delete();
-            foreach (request('item') as $id) 
+            foreach (request('item') as $id)
             {
                 $cities = City::find(request('item'));
                 $cities->delete();

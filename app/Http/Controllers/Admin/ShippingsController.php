@@ -7,11 +7,18 @@ use App\DataTables\ShippingsDatatable;
 
 use Illuminate\Http\Request;
 
-use App\Model\Shipping; 
+use App\Model\Shipping;
 use Illuminate\Support\Facades\Storage;
 
 class ShippingsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('Permission:shipping_show'  ,['only'=>'index']);
+        $this->middleware('Permission:shipping_edie'  ,['only'=>'edit','update']);
+        $this->middleware('Permission:shipping_add'   ,['only'=>'create','store']);
+        $this->middleware('Permission:shipping_delete',['only'=>'destroy','multi_delete']);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -60,8 +67,8 @@ class ShippingsController extends Controller
                 'lng'           =>  atrans('lng'),
                 'icon'          =>  atrans('icon'),
             ]);
-        
-        if (request()->hasFile('icon')) 
+
+        if (request()->hasFile('icon'))
         {
             $data['icon'] =  up()->upload([
                 //'new_name'      =>'',
@@ -69,7 +76,7 @@ class ShippingsController extends Controller
                 'path'          =>'shippings',
                 'upload_type'   =>'single',
                 'delete_file'   =>'',
-            ]); 
+            ]);
         }
         Shipping::create($data);
 
@@ -99,7 +106,7 @@ class ShippingsController extends Controller
     {
         //
         $shipping = Shipping::find($id);
-        $title = atrans('edit'); 
+        $title = atrans('edit');
         return view('admin.shippings.edit',compact('shipping','title'));
     }
 
@@ -130,8 +137,8 @@ class ShippingsController extends Controller
                 'lng'           =>  atrans('lng'),
                 'icon'          =>  atrans('icon'),
             ]);
-        
-        if (request()->hasFile('icon')) 
+
+        if (request()->hasFile('icon'))
         {
             $data['icon'] =  up()->upload([
                 //'new_name'      =>'',
@@ -139,7 +146,7 @@ class ShippingsController extends Controller
                 'path'          =>'shippings',
                 'upload_type'   =>'single',
                 'delete_file'   =>Shipping::find($id)->icon,
-            ]); 
+            ]);
         }
 
         Shipping::where('id',$id)->update($data);
@@ -157,7 +164,7 @@ class ShippingsController extends Controller
      */
     public function destroy($id)
     {
-        
+
         $shippings = Shipping::find($id);
 
         Storage::delete($shippings->icon);
@@ -174,16 +181,16 @@ class ShippingsController extends Controller
         if (is_array(request('item')))
         {
             // Shipping::destroy(request('item'));
-            foreach (request('item') as $id) 
+            foreach (request('item') as $id)
             {
                 $shippings = Shipping::find($id);
                 Storage::delete($shippings->icon);
                 $shippings->delete();
             }
         }else {
-        
+
             // Shipping::find(request('item'))->delete();
-            foreach (request('item') as $id) 
+            foreach (request('item') as $id)
             {
                 $shippings = Shipping::find(request('item'));
                 Storage::delete($shippings->icon);

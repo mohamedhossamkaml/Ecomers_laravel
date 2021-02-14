@@ -7,8 +7,8 @@
             <span class="logo-lg"><b>Admin</b>LTE</span>
         </a>
         <!-- Header Navbar: style can be found in header.less -->
-        <nav class="navbar navbar-static-top  " role="navigation"> 
-        
+        <nav class="navbar navbar-static-top  " role="navigation">
+
             @if (direction() == 'ltr')
                 <!-- Sidebar toggle button-->
                 <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
@@ -27,7 +27,7 @@
         </nav>
 </header>
     <!-- Left side column. contains the logo and sidebar -->
-<aside class="main-sidebar"> 
+<aside class="main-sidebar">
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
         <!-- Sidebar user panel -->
@@ -36,7 +36,7 @@
             <img src="{{url('/design/AdminLTE')}}/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
             </div>
             <div class="pull-left info">
-            <p> {{admin()->user()->name}} </p>
+            <p> </p>
             <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
             </div>
         </div>
@@ -77,6 +77,19 @@
                 <ul class="treeview-menu" style="{{active_menu('admin')[1]}}" >
                     <li class="{{active_help('create','admin')}}"><a href="{{aurl('admin')}}"><i class="fas fa-user-lock"></i> {{ atrans('admin') }}</a></li>
                     <li class="{{active_menu_s('create')[0]}}"><a href="{{aurl('admin/create')}}"><i class="fa fa-plus"></i> {{ atrans('add') }}</a></li>
+                </ul>
+            </li>
+
+            <li class="treeview {{active_menu('groups')[0]}}">
+                <a href="#">
+                    <i class="fas fa-user-shield"></i>  <span>{{ atrans('admin_group') }}</span>
+                    <span class="pull-right-container">
+                        {{-- <i class="fa fa-angle-left pull-right"></i> --}}
+                    </span>
+                </a>
+                <ul class="treeview-menu" style="{{active_menu('groups')[1]}}" >
+                    <li class="{{active_help('create','groups')}}"><a href="{{aurl('groups')}}"><i class="fas fa-user-lock"></i> {{ atrans('admin_group') }}</a></li>
+                    <li class="{{active_menu_s('create')[0]}}"><a href="{{aurl('groups/create')}}"><i class="fa fa-plus"></i> {{ atrans('add') }}</a></li>
                 </ul>
             </li>
 
@@ -424,4 +437,4 @@
         </ul>
     </section>
     <!-- /.sidebar -->
-</aside> 
+</aside>

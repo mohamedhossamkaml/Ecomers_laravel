@@ -9,11 +9,15 @@
     </div>
     <!-- /.box-header -->
     <div class="box-body">
-    
+
         {!! Form::open(['url'=>aurl('admin')]) !!}
         <div class="form-group">
-            {!! Form::label('name', atrans('name') ) !!}
-            {!! Form::text('name', old('name'),['class'=>'form-control'] )!!}
+            {!! Form::label('frist_name', atrans('fris_name') ) !!}
+            {!! Form::text('frist_name', old('fris_name'),['class'=>'form-control'] )!!}
+        </div>
+        <div class="form-group">
+            {!! Form::label('last_name', atrans('last_name') ) !!}
+            {!! Form::text('last_name', old('last_name'),['class'=>'form-control'] )!!}
         </div>
         <div class="form-group">
             {!! Form::label('email', atrans('email') ) !!}
@@ -22,6 +26,10 @@
         <div class="form-group">
             {!! Form::label('password', atrans('password') ) !!}
             {!! Form::password('password',['class'=>'form-control'] )!!}
+        </div>
+        <div class="form-group">
+            {!! Form::label('group_id', atrans('group_id') ) !!}
+            {!! Form::select('group_id',App\Model\admingroup::pluck('name','id'), old('group_id'),['class'=>'form-control',] )!!}
         </div>
         {!! Form::submit(atrans('create_admin'), ['class'=>'btn btn-primary'] ) !!}
         {!! Form::close() !!}

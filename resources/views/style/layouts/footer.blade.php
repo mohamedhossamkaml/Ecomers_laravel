@@ -1,4 +1,4 @@
-{{-- <div class="footer-top-area">
+<div class="footer-top-area">
     <div class="zigzag-bottom"></div>
     <div class="container">
         <div class="row">
@@ -14,7 +14,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="col-md-3 col-sm-6">
                 <div class="footer-menu">
                     <h2 class="footer-wid-title">User Navigation </h2>
@@ -24,10 +24,10 @@
                         <li><a href="#">Wishlist</a></li>
                         <li><a href="#">Vendor contact</a></li>
                         <li><a href="#">Front page</a></li>
-                    </ul>                        
+                    </ul>
                 </div>
             </div>
-            
+
             <div class="col-md-3 col-sm-6">
                 <div class="footer-menu">
                     <h2 class="footer-wid-title">Categories</h2>
@@ -37,10 +37,10 @@
                         <li><a href="#">LED TV</a></li>
                         <li><a href="#">Computer</a></li>
                         <li><a href="#">Gadets</a></li>
-                    </ul>                        
+                    </ul>
                 </div>
             </div>
-            
+
             <div class="col-md-3 col-sm-6">
                 <div class="footer-newsletter">
                     <h2 class="footer-wid-title">Newsletter</h2>
@@ -65,7 +65,7 @@
                     <p>&copy; 2015 uCommerce. All Rights Reserved. <a href="http://www.freshdesignweb.com" target="_blank">freshDesignweb.com</a></p>
                 </div>
             </div>
-            
+
             <div class="col-md-4">
                 <div class="footer-card-icon">
                     <i class="fa fa-cc-discover"></i>
@@ -76,13 +76,13 @@
             </div>
         </div>
     </div>
-</div> <!-- End footer bottom area --> --}}
-    
+</div> <!-- End footer bottom area -->
+
     <script>
         var BASE_URL = '{{ URL::to('/') }}';
     </script>
     <!-- Latest jQuery form server -->
-    <script src="{{ url('')}}/js/app.js"></script>
+    {{-- <script src="{{ url('')}}/js/app.js"></script> --}}
     {{-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> --}}
     <!-- Latest jQuery form server -->
     {{-- <script src="https://code.jquery.com/jquery.min.js"></script> --}}

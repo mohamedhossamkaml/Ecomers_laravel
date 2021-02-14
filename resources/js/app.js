@@ -24,10 +24,10 @@ const router = new VueRouter({
     routes // short for `routes: routes`
 });
 
-new Vue({
-    router,
-    render: h => h(home)
-}).$mount('#user')
+// new Vue({
+//     router,
+//     render: h => h(home)
+// }).$mount('#user')
 
 
 /**
@@ -53,7 +53,7 @@ window.Toast = Toast
 
 Vue.component('elements', require('./components/ElementComponents.vue'));
 
-const apps = new Vue({
-    el: '#apps',
+// const apps = new Vue({
+//     el: '#apps',
 
-});
+// });

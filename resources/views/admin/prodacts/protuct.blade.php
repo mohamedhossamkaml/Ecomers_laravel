@@ -4,8 +4,16 @@
 @endsection
 @section('content')
 
+{{-- @push('css')
 
-{{-- <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />  --}}
+<style>
+    .navbar{
+        flex-direction:row-reverse
+    }
+</style>
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+@endpush --}}
+
 {{-- <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script> --}}
 @push('js')
 
@@ -46,12 +54,12 @@
                         $('.error_mess').removeClass('hidden');
                     }
                 });
-                
+
                 return false;
             });
 
             $(document).on('click','.save_and_continue',function(){
-                
+
                 var form_data = $('#product_form').serialize();
 
                 $.ajax({
@@ -66,11 +74,11 @@
                         $('.error_mess').addClass('hidden');
 
                         $('.success_mess').html('').addClass('hidden');
-                        
+
                     },success: function(data){
 
                         $('.loading_save_c').addClass('hidden');
-                        
+
                         if(data.status == true)
                         {
                             $('.success_mess').html('<h1>'+data.message+'</h1>').removeClass('hidden');
@@ -92,7 +100,7 @@
                     }
                 });
 
-                
+
                 return false;
             });
         });
@@ -107,39 +115,39 @@
     </div>
     <!-- /.box-header -->
     <div class="box-body">
-    
+
         {!! Form::open(['url'=>aurl('prodacts'),'method'=>'put', 'files'=>true, 'id'=>'product_form'] ) !!}
 
         <a href="#" class="btn btn-primary save">
-            {{ atrans('save') }}                           
+            {{ atrans('save') }}
             <i class="far fa-save"></i>
         </a>
 
         <a href="#" class="btn btn-success save_and_continue">
-            {{ atrans('save_and_continue') }} 
+            {{ atrans('save_and_continue') }}
             <i class="fas fa-save"></i>
             <i class="fa fa-spin fa-spinner loading_save_c hidden"></i>
         </a>
 
         <a href="#" class="btn btn-info copy_protuct">
-            {{ atrans('copy_protuct') }}              
-            <i class="fa fa-copy"></i> 
-            <i class="fa fa-spin fa-spinner loading_copy hidden"></i>   
+            {{ atrans('copy_protuct') }}
+            <i class="fa fa-copy"></i>
+            <i class="fa fa-spin fa-spinner loading_copy hidden"></i>
         </a>
 
-        <a href="#" class="btn btn-danger delete" data-toggle="modal" data-target="#del_admin{{ $product->id }}" > 
+        <a href="#" class="btn btn-danger delete" data-toggle="modal" data-target="#del_admin{{ $product->id }}" >
             {{ atrans('delete') }}
-            <i class="fa fa-trash"></i>    
+            <i class="fa fa-trash"></i>
         </a>
 
-        <hr/>   
+        <hr/>
 
         {{-- error_message --}}
-        <div class="alert alert-danger error_mess hidden">           
+        <div class="alert alert-danger error_mess hidden">
             <ul class="validate_mess">
             </ul>
         </div>
-        
+
         {{-- success_message --}}
         <div class="alert alert-success success_mess hidden"></div>
 
@@ -147,44 +155,44 @@
 
         <ul class="nav nav-tabs">
             <li class="active">
-                <a data-toggle="tab" href="#product_info">{{ atrans('product_info') }} 
-                <i class="fas fa-info-circle"></i> 
-                </a>   
+                <a data-toggle="tab" href="#product_info">{{ atrans('product_info') }}
+                <i class="fas fa-info-circle"></i>
+                </a>
             </li>
             <li>
-                <a data-toggle="tab" href="#department">{{ atrans('department') }}                    
+                <a data-toggle="tab" href="#department">{{ atrans('department') }}
                 <i class="fas fa-list-alt"></i>
-                </a>    
+                </a>
             </li>
             <li>
-                <a data-toggle="tab" href="#product_setting">{{ atrans('product_setting') }}          
+                <a data-toggle="tab" href="#product_setting">{{ atrans('product_setting') }}
                 <i class="fas fa-cog"></i>
-                </a>   
+                </a>
             </li>
             <li>
-                <a data-toggle="tab" href="#product_media">{{ atrans('product_media') }}              
+                <a data-toggle="tab" href="#product_media">{{ atrans('product_media') }}
                     <i class="fas fa-images"></i>
-                </a>   
+                </a>
             </li>
             <li>
-                <a data-toggle="tab" href="#protuct_size_weight">{{ atrans("protuct_size_weight") }}  
+                <a data-toggle="tab" href="#protuct_size_weight">{{ atrans("protuct_size_weight") }}
                     <i class="fas fa-dolly-flatbed"></i>
-                </a>   
+                </a>
             </li>
             <li>
-                <a data-toggle="tab" href="#other_data">{{ atrans("other_data") }}                    
+                <a data-toggle="tab" href="#other_data">{{ atrans("other_data") }}
                     <i class="fas fa-database"></i>
-                </a>   
+                </a>
             </li>
             {{-- <li>
-                <a data-toggle="tab" href="#related_product">{{ atrans("related_product") }}                    
+                <a data-toggle="tab" href="#related_product">{{ atrans("related_product") }}
                     <i class="fas fa-tasks"></i>
-                </a>   
+                </a>
             </li> --}}
             <li>
-                <a data-toggle="tab" href="#related_product_vue">{{ atrans("related_product_vue") }}                    
+                <a data-toggle="tab" href="#related_product_vue">{{ atrans("related_product_vue") }}
                     <i class="fas  fa-address-book"></i>
-                </a>   
+                </a>
             </li>
         </ul>
 
@@ -203,35 +211,32 @@
 
             @include('admin.prodacts.tabs.other_data')
 
-            {{-- @include('admin.prodacts.tabs.related_product') --}}
+            @include('admin.prodacts.tabs.related_product')
 
-            @include('admin.prodacts.tabs.related_product_vue')
+            {{-- @include('admin.prodacts.tabs.related_product_vue') --}}
 
-
-
-            
         </div>
-        
 
-        <hr/> 
+
+        <hr/>
 
         <a href="#" class="btn btn-primary save">
-            {{ atrans('save') }}                           
-            <i class="far fa-save"></i>   
+            {{ atrans('save') }}
+            <i class="far fa-save"></i>
         </a>
         <a href="#" class="btn btn-success save_and_continue">
-            {{ atrans('save_and_continue') }} 
+            {{ atrans('save_and_continue') }}
             <i class="fas fa-save"></i>
             <i class="fa fa-spin fa-spinner loading_save_c hidden"></i>
         </a>
         <a href="#" class="btn btn-info copy_protuct">
-            {{ atrans('copy_protuct') }}              
+            {{ atrans('copy_protuct') }}
             <i class="fa fa-copy"></i>
-            <i class="fa fa-spin fa-spinner loading_copy hidden"></i>    
+            <i class="fa fa-spin fa-spinner loading_copy hidden"></i>
         </a>
         <a href="#" class="btn btn-danger delete" data-toggle="modal" data-target="#del_admin{{ $product->id}}" >
-            {{ atrans('delete') }} 
-            <i class="fa fa-trash"></i>    
+            {{ atrans('delete') }}
+            <i class="fa fa-trash"></i>
         </a>
 
 

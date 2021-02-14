@@ -69,7 +69,16 @@ class Kernel extends HttpKernel
         'Lang' => \App\Http\Middleware\Lang::class,
         'AuthAdmin' => \App\Http\Middleware\Admin::class,
         'users' => \App\Http\Middleware\User::class,
+        'adminprmaission' => \App\Http\Middleware\AdminPrmaissionNew::class,
         'Permission' => \App\Http\Middleware\AdminPermission::class,
+
+        /**** OTHER MIDDLEWARE ****/
+        'localize'                => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRoutes::class,
+        'localizationRedirect'    => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRedirectFilter::class,
+        'localeSessionRedirect'   => \Mcamara\LaravelLocalization\Middleware\LocaleSessionRedirect::class,
+        'localeCookieRedirect'    => \Mcamara\LaravelLocalization\Middleware\LocaleCookieRedirect::class,
+        'localeViewPath'          => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationViewPath::class
+        /**** OTHER MIDDLEWARE ****/
 
     ];
 }

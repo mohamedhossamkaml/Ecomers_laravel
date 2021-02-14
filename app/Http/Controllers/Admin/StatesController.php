@@ -14,6 +14,13 @@ use Form;
 
 class StatesController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('Permission:state_show'  ,['only'=>'index']);
+        $this->middleware('Permission:state_edie'  ,['only'=>'edit','update']);
+        $this->middleware('Permission:state_add'   ,['only'=>'create','store']);
+        $this->middleware('Permission:state_delete',['only'=>'destroy','multi_delete']);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -32,9 +39,9 @@ class StatesController extends Controller
     public function create()
     {
         //Admin Create
-        if (request()->ajax()) 
+        if (request()->ajax())
         {
-            if (request()->has('country_id')) 
+            if (request()->has('country_id'))
             {
                 $select = request()->has('select')?request('select'):'';
                 return Form::select('city_id',
@@ -67,7 +74,7 @@ class StatesController extends Controller
                 'city_id'            =>  atrans('city_id'),
                 'country_id'         =>  atrans('country_id'),
             ]);
-        
+
 
         State::create($data);
 
@@ -97,7 +104,7 @@ class StatesController extends Controller
     {
         //
         $state = State::find($id);
-        $title = atrans('edit'); 
+        $title = atrans('edit');
         return view('admin.state.edit',compact('state','title'));
     }
 
@@ -124,7 +131,7 @@ class StatesController extends Controller
             'city_id'            =>  atrans('city_id'),
             'country_id'         =>  atrans('country_id'),
         ]);
-        
+
         State::where('id',$id)->update($data);
 
         session()->flash('success',atrans('record_edit'));
@@ -140,7 +147,7 @@ class StatesController extends Controller
      */
     public function destroy($id)
     {
-        
+
         $state = State::find($id);
 
         $state->delete();
@@ -155,15 +162,15 @@ class StatesController extends Controller
         if (is_array(request('item')))
         {
             // State::destroy(request('item'));
-            foreach (request('item') as $id) 
+            foreach (request('item') as $id)
             {
                 $state = State::find($id);
                 $state->delete();
             }
         }else {
-        
+
             // State::find(request('item'))->delete();
-            foreach (request('item') as $id) 
+            foreach (request('item') as $id)
             {
                 $state = State::find(request('item'));
                 $state->delete();

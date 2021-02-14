@@ -28,9 +28,9 @@ return
 
 
         // admin data
-        
+
         'creat_Admin'       => 'Admin Control',
-        
+
         'id'                => '#ID',
         'admin_name'        => 'Admin Name',
         'admin_email'       => 'Admin Email',
@@ -74,7 +74,7 @@ return
         'record_added'      => 'Added successfully',
         'record_edit'       => 'Edited successfully ',
         'record_deleted'    => 'The data has been deleted successfully ',
-        'delete_this'       => 'Do you agree to delete this member :name ?', 
+        'delete_this'       => 'Do you agree to delete this member :name ?',
 
         'save'              => 'Save',
         'add'               => 'Add',
@@ -83,18 +83,25 @@ return
 
         'delete_all_mess_no'    => 'You should check some items',
         'delete_all_mess_yes'   => 'If you agree to delete these items, they will not be deleted directly, but will be stored until they are completely deleted',
-        
 
-        
+        // Start Admin Group
+        'group_id'              => 'Group Id',
+        'disable'               => 'Disable',
+        'admin_groups'          => 'Admin Groups',
+        'admin_group'           => 'Admin Group',
+        'create_admingroups'    => 'Create Admin Groups',
+        'name_admingroup'       => 'Name Admin Group',
+        //  End Admin Group \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
         // users
-        
+
         'users'                 => 'Users Controller',
         'user'                  => 'User',
         'company'               => 'Company',
         'vendor'                => 'Vendor',
         'level'                 => 'Users Level',
 
-        
+
         // Settings
         'settings'              => 'Settings',
         'open'                  => 'open',
@@ -110,7 +117,9 @@ return
         'keywordes'             => 'keywordes',
         'message_maintenance'   => 'Message Maintenance',
 
-        // Country  
+        // Country
+
+        'country'               => 'Country',
         'countries'             => 'Countries',
         'creat_countries'       => 'Creat Countries',
         'country_name_ar'       => 'Country name in Arabic',
@@ -120,10 +129,10 @@ return
         'code'                  => 'Select \ country code',
         'currency'              => 'Currency',
 
-        // City 
+        // City
         'city'                  => 'City',
         'cities'                => 'Cities',
-        'creat_city'            => 'Creat Cities', 
+        'creat_city'            => 'Creat Cities',
         'city_name_ar'          => 'City name in Arabic',
         'city_name_en'          => 'City name in English',
         'country_id'            => 'Country',
@@ -131,7 +140,7 @@ return
         // State
         'state'                 => 'State',
         'states'                => 'States',
-        'creat_state'           => 'Creat States', 
+        'creat_state'           => 'Creat States',
         'state_name_ar'         => 'State name in Arabic',
         'state_name_en'         => 'State name in English',
         'city_id'               => 'City',
@@ -179,7 +188,7 @@ return
 
 
         // shippings
-        
+
         'shipping_name_ar'      => 'Name Shipping Company in Arabic',
         'shipping_name_en'      => 'Name Shipping Company in English',
         'shippings'             => 'Shipping Companies',
@@ -200,18 +209,18 @@ return
         'molls_icon'            => 'Mall logo',
 
 
-        
+
         // colors
-        
+
         'color_name_ar'         => 'Color Name in Arabic',
         'color_name_en'         => 'Color Name in English',
         'colors'                => 'colors',
         'color'                 => 'color',
         'creat_color'           => 'creat color',
 
-        
+
         // size
-        
+
         'size_name_ar'          => 'Size Name in Arabic',
         'size_name_en'          => 'Size Name in English',
         'sizes'                 => 'Sizes',
@@ -229,7 +238,7 @@ return
         'creat_weight'          => 'انشاء حجم',
 
         // Start Prodact
-        
+
         'prodact_name_ar'       => 'اسم المنتج بالعربي',
         'prodact_name_en'       => 'اسم المنتج بالنجليزي',
         'prodacts'              => 'المنتجات',

@@ -7,11 +7,18 @@ use App\DataTables\SizeDatatable;
 
 use Illuminate\Http\Request;
 
-use App\Model\Size; 
+use App\Model\Size;
 use Illuminate\Support\Facades\Storage;
 
 class SizeController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('Permission:size_show'  ,['only'=>'index']);
+        $this->middleware('Permission:size_edie'  ,['only'=>'edit','update']);
+        $this->middleware('Permission:size_add'   ,['only'=>'create','store']);
+        $this->middleware('Permission:size_delete',['only'=>'destroy','multi_delete']);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -57,7 +64,7 @@ class SizeController extends Controller
                 'department_id' =>  atrans('department_id'),
                 'is_public'     =>  atrans('is_public'),
             ]);
-        
+
 
         Size::create($data);
 
@@ -87,7 +94,7 @@ class SizeController extends Controller
     {
         //
         $size = Size::find($id);
-        $title = atrans('edit'); 
+        $title = atrans('edit');
         return view('admin.size.edit',compact('size','title'));
     }
 
@@ -115,8 +122,8 @@ class SizeController extends Controller
                 'department_id' =>  atrans('department_id'),
                 'is_public'     =>  atrans('is_public'),
             ]);
-        
-        
+
+
         Size::where('id',$id)->update($data);
 
         session()->flash('success',atrans('record_edit'));
@@ -132,7 +139,7 @@ class SizeController extends Controller
      */
     public function destroy($id)
     {
-        
+
         $size = Size::find($id);
 
         $size->delete();
@@ -147,15 +154,15 @@ class SizeController extends Controller
         if (is_array(request('item')))
         {
             // Size::destroy(request('item'));
-            foreach (request('item') as $id) 
+            foreach (request('item') as $id)
             {
                 $size = Size::find($id);
                 $size->delete();
             }
         }else {
-        
+
             // Size::find(request('item'))->delete();
-            foreach (request('item') as $id) 
+            foreach (request('item') as $id)
             {
                 $size = Size::find(request('item'));
                 $size->delete();

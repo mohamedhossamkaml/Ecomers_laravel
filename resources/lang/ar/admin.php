@@ -3,7 +3,7 @@
 return
     [
         'adminpanle'    => 'مرحبًا لوحة تحكم',
-        'control_panel' => 'قائمة التحكم ', 
+        'control_panel' => 'قائمة التحكم ',
         'dashboard'     => 'لوحة القيادة',
         'Home'          => 'المنزل',
 
@@ -74,11 +74,11 @@ return
 
         'record_added'      => 'تمت الاضافه بنجاح ',
         'record_edit'       => 'تمت تعديل البيانات  بنجاح ',
-        'record_deleted'    => 'تم حذف البيانات بنجاح ', 
-        'delete_this'       => '   هل انت موافق علي حذف هذا  :name ؟', 
-        'delete_this_eraser'=> '   هل انت موافق علي حذف هذا  :name ؟ " بشكل مؤقت " ', 
+        'record_deleted'    => 'تم حذف البيانات بنجاح ',
+        'delete_this'       => '   هل انت موافق علي حذف هذا  :name ؟',
+        'delete_this_eraser'=> '   هل انت موافق علي حذف هذا  :name ؟ " بشكل مؤقت " ',
 
-        
+
         'save'          => 'حفظ',
         'add'           => 'اضافه',
         'Main'          => ' القائمة الرئيسية ',
@@ -88,9 +88,19 @@ return
         'soft_reatore'  => 'استرجاع مره اخري',
         'restore_this'  => 'هل تريد استرجعا هذا :name مره اخري ؟',
 
-        
+
         'delete_all_mess_no'    => 'يجب عليك التحقق من اختيار بعض العناصر',
         'delete_all_mess_yes'   => 'في حال الموافقه علي حذف هذه العناصر لن يتم حذفها مباشرتا ولكن سوف يتم تخزينها لحين حذفها تماما ',
+
+        // Start Admin Group
+            'group_id'              =>'المجموعات',
+            'disable'               =>'غير مصرح لك بزيارت هذه الصفحه',
+            'admin_groups'          => 'مجموعات المشرفين',
+            'admin_group'           => 'مجموعه المشرفين',
+            'create_admingroups'    => 'انشاء مجموعه المشرفين',
+            'name_admingroup'       => 'اسم مجموعه المشرفين',
+        //  End Admin Group \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
 
         // Start users
 
@@ -103,7 +113,7 @@ return
 
 
         // Start Settings
-        
+
             'open'                  => 'فتح',
             'ar'                    => 'اللغة العربية',
             'en'                    => 'اللغة الانجليزية',
@@ -123,6 +133,7 @@ return
         // Start Country
 
             'countries'         => 'الدول',
+            'country'           => 'دوله',
             'creat_countries'   => 'انشاء دوله',
             'country_name_ar'   => 'اسم الدوله بالعربي',
             'country_name_en'   => 'اسم الدوله بالانجليزي',
@@ -136,7 +147,7 @@ return
 
             'cities'        => 'المدن \ المحافظات',
             'city'          => ' المدينة \ المحافظة',
-            'creat_city'    => 'انشاء مدينة', 
+            'creat_city'    => 'انشاء مدينة',
             'city_name_ar'  => 'اسم المدينة بالعربي',
             'city_name_en'  => 'اسم المدينة بالانجليزي',
             'country_id'    => ' الدوله',
@@ -146,14 +157,14 @@ return
 
             'states'        => 'الاحياء',
             'state'         => ' الحي',
-            'creat_state'   => 'انشاء حي', 
+            'creat_state'   => 'انشاء حي',
             'state_name_ar' => 'اسم الحي بالعربي',
             'state_name_en' => 'اسم الحي بالانجليزي',
             'city_id'       => ' المدينة',
         //  End State \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
         // Start department
-        
+
             'dep_name_ar'   => 'اسم القسم باللغه العربيه ',
             'dep_name_en'   => 'اسم القسم باللغه الاجليزيه',
             'icon'          => 'الرمز',
@@ -166,7 +177,7 @@ return
         //  End department \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
         // Start tradmarks
-        
+
             'name_ar'           => 'اسم باللغه العربيه ',
             'name_en'           => 'اسم  باللغه الاجليزيه',
             'icon'              => 'الرمز',
@@ -178,7 +189,7 @@ return
         //  End maunfacturers \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
         // Start maunfacturers
-        
+
             'maunfacturers'         => 'المصنعين',
             'maunfact'              => 'المصنع',
             'creat_Maunfacturers'   => 'انشاء مصنعين',
@@ -196,7 +207,7 @@ return
         //  End maunfacturers \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
         // Start shippings
-        
+
             'shipping_name_ar'  => 'اسم شركه الشحن بالعربي',
             'shipping_name_en'  => 'اسم شركه الشحن بالنجليزي',
             'shippings'         => 'شركات الشحن',
@@ -207,7 +218,7 @@ return
         //  End shippings \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
         // Start molls
-        
+
             'moll_name_ar'  => 'اسم المجمع التجاري بالعربي',
             'moll_name_en'  => 'اسم المجمع التجاري بالنجليزي',
             'molls'         => 'المجمعات التجارية',
@@ -218,7 +229,7 @@ return
             'molls_icon'    => 'شعار المجمع التجاري',
 
         // Start colors
-        
+
             'color_name_ar'  => 'اسم اللون بالعربي',
             'color_name_en'  => 'اسم اللون بالنجليزي',
             'colors'         => 'الالوان',
@@ -227,7 +238,7 @@ return
         //  End size \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
         // Start size
-        
+
             'size_name_ar'  => 'اسم المقاس بالعربي',
             'size_name_en'  => 'اسم المقاس بالنجليزي',
             'sizes'         => 'المقاسات',
@@ -238,7 +249,7 @@ return
         //  End size \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
         // Start weight
-        
+
             'weight_name_ar'  => 'اسم الحجم بالعربي',
             'weight_name_en'  => 'اسم الحجم بالنجليزي',
             'weights'         => 'الاحجام',
@@ -247,7 +258,7 @@ return
         //  End weight \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
         // Start Prodact
-        
+
             'prodact_name_ar'       => 'اسم المنتج بالعربي',
             'prodact_name_en'       => 'اسم المنتج بالنجليزي',
             'prodacts'              => 'المنتجات',
@@ -289,13 +300,13 @@ return
             'related_product'       => ' منتجات ذات صله  ',
 
             //db
-            'currency_id'=>'',      
-                
+            'currency_id'=>'',
+
             //  pending   refused    active
             'pending'               => ' بانتظار التفعيل ',
             'refused'               => ' مرفوض',
             'active'                => ' مفعل',
-            
+
 
             // btn
             'save_and_continue'     => 'حفظ و استمرار',

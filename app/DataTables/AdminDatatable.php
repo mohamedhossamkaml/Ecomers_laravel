@@ -3,6 +3,7 @@
 namespace App\DataTables;
 
 use App\Admin;
+use App\Model\admingroup;
 use Yajra\DataTables\Services\DataTable;
 use Illuminate\Support\Facades\URL;
 
@@ -125,8 +126,8 @@ class AdminDatatable extends DataTable
                 'data'=>'id',
                 'title'=>atrans('id'),
             ],[
-                'name'=>'name',
-                'data'=>'name',
+                'name'=>'frist_name',
+                'data'=>'frist_name',
                 'title'=>atrans('admin_name'),
             ],[
                 'name'=>'email',

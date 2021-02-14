@@ -1,4 +1,4 @@
-{{-- <div class="header-area">
+<div class="header-area">
     <div class="container">
         <div class="row">
             <div class="col-md-8">
@@ -12,7 +12,7 @@
                     </ul>
                 </div>
             </div>
-            
+
             <div class="col-md-4">
                 <div class="header-right">
                     <ul class="list-unstyled list-inline">
@@ -38,4 +38,4 @@
         </div>
     </div>
 </div> <!-- End header area -->
---}}
+

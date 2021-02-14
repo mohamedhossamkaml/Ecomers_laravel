@@ -1,16 +1,26 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
+
 use App\Http\Controllers\Controller;
 
 use App\DataTables\AdminDatatable;
 
 use Illuminate\Http\Request;
 
+use App\Model\admingroup;
+
 use App\Admin;
 
 class AdminController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('Permission:admin_show'  ,['only'=>'index']);
+        $this->middleware('Permission:admin_edie'  ,['only'=>'edit','update']);
+        $this->middleware('Permission:admin_add'   ,['only'=>'create','store']);
+        $this->middleware('Permission:admin_delete',['only'=>'destroy','multi_delete']);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -18,7 +28,7 @@ class AdminController extends Controller
      */
     public function index(AdminDatatable $admin)
     {
-        return $admin->render('admin.admins.index', ['title'=> atrans('Admin')]);
+        return $admin->render('admin.admins.index', ['title' => atrans('Admin')]);
     }
 
 
@@ -37,7 +47,7 @@ class AdminController extends Controller
     {
         //Admin Create
 
-        return view('admin.admins.create',['title'=>atrans('create_admin')]);
+        return view('admin.admins.create', ['title' => atrans('create_admin')]);
     }
 
     /**
@@ -49,22 +59,29 @@ class AdminController extends Controller
     public function store()
     {
 
-        $data = $this->validate(request(),
+        $data = $this->validate(
+            request(),
             [
-                'name'      =>  'required',
+                'frist_name'      =>  'required',
+                'last_name'      =>  'required',
                 'email'     =>  'required|email|unique:admins',
                 'password'  =>  'required|min:6',
-            ],[],
+                'group_id'      =>  'required|numeric',
+            ],
+            [],
             [
-                'name'      =>  atrans('name'),
+                'frist_name'      =>  atrans('frist_name'),
+                'last_name'      =>  atrans('last_name'),
                 'email'     =>  atrans('email'),
                 'password'  =>  atrans('password'),
-            ]);
-        
-        $data['password']= bcrypt(request('password'));
+                'group_id'  =>  atrans('group_id'),
+            ]
+        );
+
+        $data['password'] = bcrypt(request('password'));
         Admin::create($data);
 
-        session()->flash('success',atrans('record_added'));
+        session()->flash('success', atrans('record_added'));
 
         return redirect(aurl('admin'));
     }
@@ -90,8 +107,8 @@ class AdminController extends Controller
     {
         //
         $admin = Admin::find($id);
-        $title = atrans('edit'); 
-        return view('admin.admins.edit',compact('admin','title'));
+        $title = atrans('edit');
+        return view('admin.admins.edit', compact('admin', 'title'));
     }
 
     /**
@@ -105,28 +122,34 @@ class AdminController extends Controller
     {
         //
 
-        $data = $this->validate(request(),
-        [
-            'name'      =>  'required',
-            'email'     =>  'required|email|unique:admins,email,'.$id,
-            'password'  =>  'sometimes|nullable|min:6',
-        ],[],
-        [
-            'name'      =>  atrans('name'),
-            'email'     =>  atrans('email'),
-            'password'  =>  atrans('password'),
-        ]);
-    
-    if ( request()->has('password') ) 
-    {
-        
-        $data['password']= bcrypt(request('password'));
-    }
-    Admin::where('id',$id)->update($data);
+        $data = $this->validate(
+            request(),
+            [
+                'frist_name'    =>  'required',
+                'last_name'     =>  'required',
+                'email'         =>  'required|email|unique:admins,email,' . $id,
+                'password'      =>  'sometimes|nullable|min:6',
+                'group_id'      =>  'required|numeric',
+            ],
+            [],
+            [
+                'frist_name'      =>  atrans('frist_name'),
+                'last_name'      =>  atrans('last_name'),
+                'email'     =>  atrans('email'),
+                'password'  =>  atrans('password'),
+                'group_id'  =>  atrans('group_id'),
+            ]
+        );
 
-    session()->flash('success',atrans('record_edit'));
+        if (request()->has('password')) {
 
-    return redirect(aurl('admin'));
+            $data['password'] = bcrypt(request('password'));
+        }
+        Admin::where('id', $id)->update($data);
+
+        session()->flash('success', atrans('record_edit'));
+
+        return redirect(aurl('admin'));
     }
 
     /**
@@ -137,25 +160,24 @@ class AdminController extends Controller
      */
     public function destroy($id)
     {
-        
+
         Admin::find($id)->delete();
 
-        session()->flash('success',atrans('record_deleted'));
+        session()->flash('success', atrans('record_deleted'));
 
         return redirect(aurl('admin'));
     }
 
     public function multi_delete()
     {
-        if (is_array(request('item')))
-        {
+        if (is_array(request('item'))) {
             Admin::destroy(request('item'));
-        }else {
-        
+        } else {
+
             Admin::find(request('item'))->delete();
         }
 
-        session()->flash('success',atrans('record_deleted'));
+        session()->flash('success', atrans('record_deleted'));
 
         return redirect(aurl('admin'));
     }

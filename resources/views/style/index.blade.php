@@ -5,11 +5,6 @@
 
     @yield('content')
 
-
-
-<div id="apps">
-</div>
-
 @include('style.layouts.footer')
 
 

@@ -6,7 +6,7 @@
     </div>
     <!-- /.box-header -->
     <div class="box-body  ">
-        
+
         {!! Form::open(['id'=>'form_data','url'=>aurl('prodacts/destroy/all/soft'), 'method'=>'delete']) !!}
         {!! $dataTable->table(['class'=>'dataTable table teble-striped table-hover table-striped table-bordered'], true ) !!}
         {!! Form::close() !!}

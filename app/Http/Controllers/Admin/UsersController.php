@@ -11,6 +11,13 @@ use App\User;
 
 class UsersController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('Permission:users_show'  ,['only'=>'index']);
+        $this->middleware('Permission:users_edie'  ,['only'=>'edit','update']);
+        $this->middleware('Permission:users_add'   ,['only'=>'create','store']);
+        $this->middleware('Permission:users_delete',['only'=>'destroy','multi_delete']);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -55,7 +62,7 @@ class UsersController extends Controller
                 'email'     =>  atrans('email'),
                 'password'  =>  atrans('password'),
             ]);
-        
+
         $data['password']= bcrypt(request('password'));
         User::create($data);
 
@@ -72,7 +79,7 @@ class UsersController extends Controller
      */
     public function show($id)
     {
-        
+
     }
 
     /**
@@ -85,7 +92,7 @@ class UsersController extends Controller
     {
         //
         $users = User::find($id);
-        $title = atrans('edit'); 
+        $title = atrans('edit');
         return view('admin.users.edit',compact('users','title'));
     }
 
@@ -113,10 +120,10 @@ class UsersController extends Controller
             'email'     =>  atrans('email'),
             'password'  =>  atrans('password'),
         ]);
-    
-    if ( request()->has('password') ) 
+
+    if ( request()->has('password') )
     {
-        
+
         $data['password']= bcrypt(request('password'));
     }
     User::where('id',$id)->update($data);
@@ -134,7 +141,7 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
-        
+
         User::find($id)->delete();
 
         session()->flash('success',atrans('record_deleted'));
@@ -148,7 +155,7 @@ class UsersController extends Controller
         {
             User::destroy(request('item'));
         }else {
-        
+
             User::find(request('item'))->delete();
         }
 
